@@ -19,11 +19,6 @@ BASE_DIR = os.getcwd()
 MESSAGE_DIR = BASE_DIR + "/data/message"
 
 
-@app.route("/")
-def hello():
-    return "Hello World"
-
-
 @app.route("/users", methods=["POST"])
 def createUser():
     id = request.get_json()["id"]
@@ -67,8 +62,8 @@ def decryptMessage():
 #######################################
 
 
-def encrypt(message, a):
-    mesbin = message.encode("utf-8")
+def encrypt(p, a):
+    mesbin = p.encode("utf-8")
     c = cocks.encrypt(mesbin, mpz(a))
     return c
 
@@ -79,10 +74,9 @@ def decrypt(c, r, a):
 
 
 def server_main():
-    app.run(debug=True, host="0.0.0.0", port=12300)
+    app.run(debug=False, host="0.0.0.0", port=12300)
 
 
 if __name__ == "__main__":
     print("server start")
-    print(MESSAGE_DIR)
     server_main()
