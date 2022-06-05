@@ -1,0 +1,3 @@
+[submodule "src/pycocks"]
+	path = src/pycocks
+	url = https://github.com/cgshep/pycocks
